@@ -1,0 +1,35 @@
+basic_problem.pddl
+
+step    0: ANYADIR_LIBRO_PREDECESOR_A_LEER L1 L2
+        1: LEER_LIBRO L6
+        2: LEER_LIBRO L3
+        3: LEER_LIBRO L1
+        4: LEER_LIBRO L2
+
+
+
+basic_problem_2.pddl
+
+step    0: ANYADIR_LIBRO_PREDECESOR_A_LEER L5 L6
+        1: ANYADIR_LIBRO_PREDECESOR_A_LEER L1 L2
+        2: LEER_LIBRO L5
+        3: LEER_LIBRO L6
+        4: LEER_LIBRO L3
+        5: LEER_LIBRO L1
+        6: LEER_LIBRO L2
+
+
+
+basic_problem_3.pddl
+
+step    0: LEER_LIBRO L3
+
+
+
+basic_problem_4.pddl
+
+step    0: ANYADIR_LIBRO_PREDECESOR_A_LEER L1 L2
+        1: LEER_LIBRO L3
+        2: LEER_LIBRO L1
+        3: LEER_LIBRO L2
+        
