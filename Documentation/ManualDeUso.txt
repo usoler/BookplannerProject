@@ -1,12 +1,11 @@
-Les següents comandes s'executen per terminal desde la carpeta de Metric-FF:
-
-
 EXECUCIO DEL PLANIFICADOR
+La comanda següent s'executa per terminal desde la carpeta Metric-FF:
 
     $ ./ff -o <fitxer_domini> -f <fitxer_problema>
 
 
 EXECUCIO DELS GENERADORS
+Les següents comandes s'executen per terminal desde la carpeta de Generadors:
 
  - Nivell bàsic
 
