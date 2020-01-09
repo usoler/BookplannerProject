@@ -48,7 +48,7 @@ for i in range(nLibros):
 
 #Escribimos en el fichero:
 #primero generamos el texto:
-pddlText =  "(define (problem test) (:domain ext2_planner)\n" 
+pddlText =  "(define (problem test) (:domain ext3_planner)\n" 
 pddlText += "   (:objects "+ strNombres +"- libro\n"
 pddlText += "             M1 M2 M3 M4 M5 M6 M7 M8 M9 M10 M11 M12 - mes)\n" 
 pddlText += "	(:init\n"
@@ -78,11 +78,29 @@ for i in range(nLibros):
 
 pddlText +="\n"
 
+vPaginas = []
+for i in range(nLibros):
+    pags = random.randint(10,800)
+    pddlText += "\t\t(= (paginas_libro  L"+str(i)+") "+str(pags)+")\n"
+    vPaginas.append(pags)
+
 for i in range(nLibros):
     pddlText += "\t\t(= (ultimo_mes L"+str(i)+") 0)\n"
 
 pddlText +="\n"
-
+pddlText +="\t\t(= (paginas_mes M1) 0)\n"
+pddlText +="\t\t(= (paginas_mes M2) 0)\n"
+pddlText +="\t\t(= (paginas_mes M3) 0)\n"
+pddlText +="\t\t(= (paginas_mes M4) 0)\n"
+pddlText +="\t\t(= (paginas_mes M5) 0)\n"
+pddlText +="\t\t(= (paginas_mes M6) 0)\n"
+pddlText +="\t\t(= (paginas_mes M7) 0)\n"
+pddlText +="\t\t(= (paginas_mes M8) 0)\n"
+pddlText +="\t\t(= (paginas_mes M9) 0)\n"
+pddlText +="\t\t(= (paginas_mes M10) 0)\n"
+pddlText +="\t\t(= (paginas_mes M11) 0)\n"
+pddlText +="\t\t(= (paginas_mes M12) 0)\n"
+pddlText +="\n"
 pddlText +="\t\t(= (numero_mes M1) 1)\n"
 pddlText +="\t\t(= (numero_mes M2) 2)\n"
 pddlText +="\t\t(= (numero_mes M3) 3)\n"
@@ -95,25 +113,23 @@ pddlText +="\t\t(= (numero_mes M9) 9)\n"
 pddlText +="\t\t(= (numero_mes M10) 10)\n"
 pddlText +="\t\t(= (numero_mes M11) 11)\n"
 pddlText +="\t\t(= (numero_mes M12) 12)\n"
-
 pddlText +="\n"
-
-pddlText +=    "\t)\n"
-pddlText +=    "\t\t(:goal (and\n"
-pddlText +=    "\t\t\t(forall (?x - libro)\n"
-pddlText +=    "\t\t\t\t(or\n"
-pddlText +=    "\t\t\t\t\t(not (leer ?x))\n"
-pddlText +=    "\t\t\t\t\t(asignado ?x)\n"
-pddlText +=    "\t\t\t\t\t(leido ?x)\n"
-pddlText +=    "\t\t\t\t)\n"
-pddlText +=    "\t\t\t)\n"
-pddlText +=    "\t\t)\n"
-pddlText +=    "\t)\n"
-pddlText +=    ")"
+pddlText +="\t)\n"
+pddlText +="\t\t(:goal (and\n"
+pddlText +="\t\t\t(forall (?x - libro)\n"
+pddlText +="\t\t\t\t(or\n"
+pddlText +="\t\t\t\t\t(not (leer ?x))\n"
+pddlText +="\t\t\t\t\t(asignado ?x)\n"
+pddlText +="\t\t\t\t\t(leido ?x)\n"
+pddlText +="\t\t\t\t)\n"
+pddlText +="\t\t\t)\n"
+pddlText +="\t\t)\n"
+pddlText +="\t)\n"
+pddlText +=")"
 
 #después escribimos el texto generado en un fichero pddl
-os.makedirs(os.path.dirname("./JuegosDePruebaGenerados/ext2_problem_generated.pddl"), exist_ok=True)
-with open("./JuegosDePruebaGenerados/ext2_problem_generated.pddl", "w") as juegoDePrueba:
+os.makedirs(os.path.dirname("./JuegosDePruebaGenerados/ext3_problem_generated.pddl"), exist_ok=True)
+with open("./JuegosDePruebaGenerados/ext3_problem_generated.pddl", "w") as juegoDePrueba:
     juegoDePrueba.write(pddlText)
 
 #Describimos el problema:
@@ -129,10 +145,13 @@ for l in vLeer:
 print("\tLeidos:")
 for l in vLeidos:
     print("\t\tL"+str(l))
+print("\tPáginas:")
+for l in range(nLibros):
+    print("\t\tL"+str(l)+": "+str(vPaginas[l]))
 print("\nOutput:")
 
 #Ejecutamos y guardamos el output para leerlo mas tarde:
 try:
-    os.system("../../Metric-FF/ff -o ../Extension_2/ext2_domain.pddl -f ./JuegosDePruebaGenerados/ext2_problem_generated.pddl")
+    os.system("../../Metric-FF/ff -o ../Extension_3/ext3_domain.pddl -f ./JuegosDePruebaGenerados/ext3_problem_generated.pddl")
 except:
     print("Error al ejecutar el programa")
